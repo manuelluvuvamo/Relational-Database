@@ -1,4 +1,4 @@
-# Bases de Dados Relacionais
+# Certificação de Bases de Dados Relacionais
 
 ## PostgreSQL: Base de Dados sobre Mário
 
