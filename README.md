@@ -175,7 +175,7 @@
   find -name <nome_do_arquivo>
   ```
 
-    ## Bash Scripting com cinco programas
+## Bash Scripting com cinco programas
 
  Aqui está uma versão organizada e traduzida do conteúdo fornecido sobre *Bash Scripting* com cinco programas:
 
