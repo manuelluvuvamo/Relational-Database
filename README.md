@@ -1,6 +1,6 @@
 # Bases de Dados Relacionais
 
-## PostgreSQL: Aprenda Bancos de Dados Relacionais com Mario
+## PostgreSQL: Base de Dados sobre Mário
 
 ### **Comandos Iniciais**
 - **Listar bancos de dados existentes**:  
@@ -113,7 +113,7 @@
 - **Tipo de dado `NUMERIC` para números decimais**:  
   Use `NUMERIC(x, y)`, onde `x` é o número total de dígitos e `y` é o número de dígitos à direita do ponto decimal. Exemplo: `NUMERIC(4, 1)` permite até 4 dígitos, sendo 1 após o ponto.
 
-  ## Aprenda Bash Criando um Boilerplate
+  ## Boilerplate Bash
 
 ### **Comandos de Manipulação de Arquivos**
 - **Visualizar o conteúdo de um arquivo**:  
@@ -174,3 +174,107 @@
   ```bash
   find -name <nome_do_arquivo>
   ```
+
+    ## Bash Scripting com cinco programas
+
+ Aqui está uma versão organizada e traduzida do conteúdo fornecido sobre *Bash Scripting* com cinco programas:
+
+---
+
+### 1. **Comando para Executar o Script**
+- **Comando:** Execute o script com o comando:
+  ```bash
+  sh <nome_do_arquivo.sh>
+  ```
+
+### 2. **Encontrar o Local do Interpretador Bash**
+- **Comando:** Para descobrir onde o interpretador Bash está localizado, use:
+  ```bash
+  which bash
+  ```
+
+### 3. **Conceder Permissão de Execução**
+- **Comando:** Para conceder permissões de execução para todos os usuários, digite:
+  ```bash
+  chmod +x <nome_do_arquivo.sh>
+  ```
+
+### 4. **Utilizando o Manual de Comandos**
+- **Comando:** Para obter mais informações sobre um comando, use o `man` (manual). Por exemplo:
+  ```bash
+  man <comando>
+  ```
+
+### 5. **Acessando Argumentos no Script**
+- **Comando:** Os programas podem aceitar argumentos. Para exibir todos os argumentos passados ao script, use:
+  ```bash
+  echo $*
+  ```
+
+### 6. **Estrutura Condicional em Bash**
+- **Exemplo:**
+  ```bash
+  if [[ CONDICAO ]]
+  then
+    COMANDOS
+  fi
+  ```
+
+  - **Verificação de Inteiro:** Para verificar se o argumento passado é um número menor que 5, altere a condição `if` da seguinte maneira:
+    ```bash
+    if [[ $1 -lt 5 ]]
+    then
+      # comandos
+    fi
+    ```
+
+### 7. **Verificando o Status de Saída de um Comando**
+- **Comando:** O status de saída de um comando pode ser verificado com `$?`. Por exemplo:
+  ```bash
+  [[ 4 -ge 5 ]]; echo $?
+  ```
+  Isso exibirá o status de saída do comando, que será `1` (falso) porque a condição `4 -ge 5` não é verdadeira.
+
+### 8. **Operadores de Arquivo em Bash**
+- **Comando:** Para verificar se um arquivo existe, use:
+  ```bash
+  [[ -a countdown.sh ]]; echo $?
+  ```
+  Isso retornará `0` (verdadeiro) se o arquivo `countdown.sh` existir, ou `1` (falso) se não existir.
+
+### 9. **Laço de Repetição `for`**
+- **Exemplo de laço `for`:**
+  ```bash
+  for (( i = 10; i > 0; i-- ))
+  do
+    echo $i
+  done
+  ```
+  Esse laço imprime os números de 10 a 1, decrementando o valor de `i` a cada iteração.
+
+### 10. **Gerando Números Aleatórios**
+- **Comando:** A variável `$RANDOM` gera um número aleatório entre 0 e 32767. Para gerar um número aleatório dentro de um intervalo (por exemplo, de 0 a 74), use o operador de módulo:
+  ```bash
+  NUMBER=$(( RANDOM % 75 ))
+  ```
+
+### 11. **Expressões Regulares em Bash**
+- **Exemplo 1:** Verificando se a string "hello world" começa com "h":
+  ```bash
+  [[ "hello world" =~ ^h ]]
+  ```
+  Isso retorna verdadeiro se a string começar com "h".
+
+- **Exemplo 2:** Verificando se a string começa com "h", tem pelo menos um caractere após o "h" e termina com "d":
+  ```bash
+  [[ "hello world" =~ ^h.+d$ ]]
+  ```
+
+- **Exemplo 3:** Verificando se a string termina com "?":
+  ```bash
+  [[ "$variavel" =~ \?$ ]]
+  ```
+
+---
+
+Este guia organizado oferece uma explicação clara de como realizar várias operações no Bash, como executar scripts, usar condições, laços de repetição, manipulação de arquivos, e expressões regulares.
