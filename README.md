@@ -277,8 +277,48 @@
 
   ## Criando um banco de dados de alunos: parte 1
   
-  - You used the psql command to log in and interact with the database. You can use it to just run a single command and exit. Above your loop, add a PSQL variable that looks like this: PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c". This will allow you to query your database from your script. The important parts are the username, dbname, and the -c flag that is for running a single command and exiting. The rest of the flags are for formatting.
+  ### 1. **Configurando a variável PSQL**
 
-  - Now, you can query your database using the PSQL variable like this: $($PSQL "<query_here>"). The code in the parenthesis will run in a subshell, which is a separate bash process
+  O primeiro passo é criar uma variável para o comando `psql`. Isso vai permitir que você execute consultas no banco de dados diretamente no seu script. A variável `PSQL` será configurada com as opções necessárias.
 
-  -  Enter pg_dump --clean --create --inserts --username=<name> <databasename> > <filename.sql> in the terminal to dump the database into a <filename.sql> file. It will save all the commands needed to rebuild it. Take a quick look at the file when you are done.
+  ```bash
+  PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"
+  ```
+
+  - **`--username=freecodecamp`**: Define o nome do usuário para conexão com o banco de dados.
+  - **`--dbname=students`**: Especifica o banco de dados que você deseja usar.
+  - **`--no-align`**: Remove o alinhamento de colunas na saída, útil para scripts.
+  - **`--tuples-only`**: Faz com que o comando retorne apenas os valores das tuplas (sem cabeçalhos ou informações extras).
+  - **`-c`**: Permite que você execute um comando SQL diretamente, sem precisar abrir uma sessão interativa.
+
+  ### 2. **Executando consultas com a variável PSQL**
+
+  Com a variável `PSQL` configurada, você pode executar consultas diretamente no banco de dados dentro do seu script. Aqui está um exemplo de como você faria isso para selecionar todos os alunos:
+
+  ```bash
+  RESULT=$($PSQL "SELECT * FROM students;")
+  ```
+
+  A consulta SQL dentro do comando `$PSQL` será executada e o resultado será armazenado na variável `RESULT`. Isso é útil para pegar dados ou fazer verificações dentro do script.
+
+  ### 3. **Usando `pg_dump` para fazer o backup do banco de dados**
+
+  Depois de completar as inserções ou qualquer outra modificação no banco de dados, você pode usar o `pg_dump` para criar um backup completo da estrutura e dos dados do banco.
+
+  O comando `pg_dump` exporta o banco de dados para um arquivo SQL, permitindo que você recrie o banco de dados a partir desse arquivo.
+
+  Aqui está o comando que você deve executar no terminal para fazer o dump do banco de dados:
+
+  ```bash
+  pg_dump --clean --create --inserts --username=freecodecamp --dbname=students > backup_students.sql
+  ```
+
+  Explicando cada parte desse comando:
+
+  - **`--clean`**: Inclui comandos para limpar (deletar) objetos do banco de dados antes de recriar. Isso ajuda a evitar conflitos ao restaurar o banco.
+  - **`--create`**: Gera o comando para criar o banco de dados no arquivo de backup.
+  - **`--inserts`**: Usa comandos `INSERT` no arquivo de backup, em vez de usar comandos `COPY`. Isso torna o arquivo de backup mais legível e reutilizável.
+  - **`--username=freecodecamp`**: Especifica o nome de usuário do banco de dados.
+  - **`--dbname=students`**: O nome do banco de dados que você está fazendo o backup.
+  - **`> backup_students.sql`**: Redireciona a saída do comando para um arquivo chamado `backup_students.sql`.
+
