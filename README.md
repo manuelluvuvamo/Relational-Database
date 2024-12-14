@@ -322,3 +322,65 @@
   - **`--dbname=students`**: O nome do banco de dados que você está fazendo o backup.
   - **`> backup_students.sql`**: Redireciona a saída do comando para um arquivo chamado `backup_students.sql`.
 
+
+ ## Criando um banco de dados de alunos: parte 2  
+
+  ### 1. **Importando a base de dados**
+  - Use `psql -U postgres < students.sql` para reconstruir o banco de dados.  
+
+  ### 2. **Visualizando e filtrando dados**
+  - Para exibir apenas a coluna `first_name` da tabela `students`, substitua o `*` pelo nome da coluna no comando SQL.  
+  - Use a cláusula `WHERE` para filtrar resultados, adicionando uma condição como `<coluna> <operador> <valor>`. Por exemplo:
+    - GPA menor que 2.5: `WHERE gpa < 2.5`.  
+    - GPA maior ou igual a 3.8: `WHERE gpa >= 3.8`.  
+    - GPA diferente de 4.0: `WHERE gpa != 4.0`.  
+  - Filtre registros começando por letras específicas:
+    - Exibir maiores ou iguais a "G": `WHERE major >= 'G'`.  
+  - Combine condições com `AND`, `OR` e parênteses para agrupar:
+    - Exemplo: `WHERE last_name < 'M' AND (gpa <= 3.9 OR gpa < 2.3)`.  
+
+  ### 3. **Busca por padrões em texto**
+  - Use `LIKE` para encontrar padrões em colunas de texto:  
+    - `_` substitui um caractere: `_lgorithms` encontra "Algorithms" com uma letra no início.  
+    - `%` substitui qualquer sequência: `lgorithms%` encontra textos terminando com "lgorithms".  
+  - Use `ILIKE` para ignorar maiúsculas/minúsculas nos padrões.  
+
+  ### 4. **Ordenação e limites**
+  - Ordene resultados com `ORDER BY <coluna>`:
+    - Ordem ascendente por padrão. Adicione `DESC` para descendente.  
+  - Ordene por múltiplas colunas, separadas por vírgulas:  
+    - `ORDER BY gpa DESC, first_name`.  
+  - Limite o número de resultados com `LIMIT <número>` no final do comando.  
+
+  ### 5. **Funções agregadas**
+  - Funções úteis para colunas numéricas:  
+    - `MIN`: menor valor.  
+    - `MAX`: maior valor.  
+    - `SUM`: soma dos valores.  
+    - `AVG`: média dos valores.  
+    - `COUNT`: número de entradas.  
+  - Arredondamentos:
+    - Para cima: `CEIL`.  
+    - Para baixo: `FLOOR`.  
+    - Para um número específico de casas decimais: `ROUND(<número>, <decimais>)`.  
+
+  ### 6. **Valores únicos e agrupamento**
+  - Exiba valores únicos com `DISTINCT(<coluna>)`.  
+  - Agrupe resultados com `GROUP BY` e combine com funções agregadas:  
+    - Exemplo: `SELECT COUNT(*) FROM students GROUP BY major_id`.  
+  - Use `HAVING` para filtrar grupos com base em funções agregadas:  
+    - Exemplo: `HAVING COUNT(*) > 0`.  
+
+  ### 7. **Renomeando colunas e tabelas**
+  - Use `AS` para renomear colunas ou tabelas:  
+    - Exemplo: `SELECT major AS course FROM majors`.  
+
+  ### 8. **Junções entre tabelas**
+  - Combine dados de tabelas diferentes com `JOIN`:
+    - `FULL JOIN`: inclui todos os registros de ambas as tabelas.  
+    - `LEFT JOIN`: inclui todos os registros da tabela à esquerda e os correspondentes à direita.  
+    - `RIGHT JOIN`: inclui todos os registros da tabela à direita e os correspondentes à esquerda.  
+    - `INNER JOIN`: inclui apenas registros com correspondências em ambas as tabelas.  
+  - Use `USING` como atalho quando as colunas de chave estrangeira têm o mesmo nome em ambas as tabelas.  
+  - Renomeie tabelas durante junções usando `AS` para simplificar as referências:  
+    - Exemplo: `SELECT * FROM majors AS m LEFT JOIN students AS s ON m.major_id = s.major_id`.
