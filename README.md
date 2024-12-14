@@ -387,4 +387,4 @@
 
   ## Banco de dados da Copa do Mundo
 
-  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em (Banco de dados da Copa do Mundo)[https://github.com/manuelluvuvamo/relational-database/tree/main/Banco de dados da Copa do Mundo]
+  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Banco de dados da Copa do Mundo](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco de dados da Copa do Mundo)
