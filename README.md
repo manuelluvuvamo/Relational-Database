@@ -384,3 +384,7 @@
   - Use `USING` como atalho quando as colunas de chave estrangeira têm o mesmo nome em ambas as tabelas.  
   - Renomeie tabelas durante junções usando `AS` para simplificar as referências:  
     - Exemplo: `SELECT * FROM majors AS m LEFT JOIN students AS s ON m.major_id = s.major_id`.
+
+  ## Banco de dados da Copa do Mundo
+
+  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em (Banco de dados da Copa do Mundo)[https://github.com/manuelluvuvamo/relational-database/tree/main/Banco de dados da Copa do Mundo]
