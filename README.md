@@ -388,3 +388,161 @@
   ## Banco de dados da Copa do Mundo
 
   Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Banco de dados da Copa do Mundo](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco%20de%20dados%20da%20Copa%20do%20Mundo)
+
+ Segue uma versão organizada, traduzida e aprimorada dos seus apontamentos sobre Bash avançado, com foco no uso de redirecionamentos, pipes, e ferramentas como `grep`, `sed` e `diff`:
+
+---
+
+## Bash Avançado: Construindo um Tradutor de Kitty Ipsum
+
+### **Redirecionando Saída**
+1. **Redirecionar para um arquivo:**
+   - O operador `>` redireciona a saída padrão (stdout) de um comando para um arquivo. Exemplo:
+     ```bash
+     echo "hello bash" > stdout.txt
+     ```
+   - Isso cria ou sobrescreve o arquivo `stdout.txt`.
+
+2. **Acrescentar ao arquivo:**
+   - O operador `>>` adiciona a saída ao final do arquivo, sem sobrescrevê-lo. Exemplo:
+     ```bash
+     echo "hello again" >> stdout.txt
+     ```
+
+3. **Redirecionar erros:**
+   - O operador `2>` redireciona a saída de erro (stderr) para um arquivo. Exemplo:
+     ```bash
+     bad_command 2> stderr.txt
+     ```
+
+---
+
+### **Redirecionando Entrada**
+1. **Usando stdin:**
+   - Por padrão, a entrada padrão (stdin) vem do teclado. O comando `read` pode usá-la para atribuir valores a variáveis:
+     ```bash
+     read NAME
+     ```
+
+2. **Redirecionar stdin de um arquivo:**
+   - Use `<` para redirecionar o conteúdo de um arquivo como entrada para um comando. Exemplo:
+     ```bash
+     read NAME < name.txt
+     ```
+
+3. **Usar pipe (|) como entrada:**
+   - O pipe redireciona a saída padrão de um comando como entrada padrão de outro. Exemplo:
+     ```bash
+     echo "Manuel" | read NAME
+     ```
+   - **Atenção:** Este método roda em um *subshell*, então as variáveis podem não estar disponíveis no shell principal.
+
+---
+
+### **Comandos úteis para manipulação de texto**
+1. **`cat`:**
+   - Exibe o conteúdo de um arquivo. Exemplo:
+     ```bash
+     cat name.txt
+     ```
+
+2. **`wc`:**
+   - Conta linhas, palavras e bytes de um arquivo. Exemplo:
+     ```bash
+     wc kitty_ipsum_1.txt
+     ```
+   - Para contar apenas linhas, use a flag `-l`:
+     ```bash
+     wc -l kitty_ipsum_1.txt
+     ```
+
+3. **`grep`:**
+   - Procura padrões em arquivos. Exemplo:
+     ```bash
+     grep 'meow' kitty_ipsum_1.txt
+     ```
+   - Flags úteis:
+     - `--color`: Realça o padrão encontrado.
+     - `-n`: Mostra os números das linhas.
+     - `-c`: Conta as ocorrências.
+     - `-o`: Exibe apenas as correspondências, cada uma em uma nova linha.
+   - Exemplo com múltiplas flags:
+     ```bash
+     grep --color -n 'meow[a-z]*' kitty_ipsum_1.txt
+     ```
+
+---
+
+### **Manipulando texto com `sed`**
+1. **Substituir padrões:**
+   - Substitui um padrão em um arquivo. Exemplo:
+     ```bash
+     sed 's/<padrão>/<substituição>/' kitty_ipsum_1.txt
+     ```
+   - Para ignorar diferenças de maiúsculas e minúsculas, adicione a flag `i`:
+     ```bash
+     sed 's/meow/woof/i' kitty_ipsum_1.txt
+     ```
+
+2. **Expressões regulares avançadas:**
+   - Use a flag `-E` para habilitar expressões regulares estendidas. Exemplo:
+     ```bash
+     sed -E 's/[0-9]+/1/' kitty_ipsum_1.txt
+     ```
+
+3. **Grupos de captura:**
+   - Utilize parênteses para capturar partes do padrão e usá-las na substituição:
+     ```bash
+     sed -E 's/([0-9]+).*/\1/' kitty_ipsum_1.txt
+     ```
+     - Este comando captura números e os substitui por eles mesmos.
+
+4. **Substituir múltiplos padrões:**
+   - Combine substituições em uma única execução:
+     ```bash
+     sed 's/meow/woof/; s/cat/dog/' kitty_ipsum_1.txt
+     ```
+
+---
+
+### **Comparando Arquivos**
+1. **`diff`:**
+   - Compara dois arquivos e exibe as diferenças:
+     ```bash
+     diff kitty_ipsum_1.txt doggy_ipsum_1.txt
+     ```
+   - Para exibir diferenças com cores, use a flag `--color`:
+     ```bash
+     diff --color kitty_ipsum_1.txt doggy_ipsum_1.txt
+     ```
+
+---
+
+### **Exemplo Completo: Tradutor Kitty Ipsum**
+1. **Traduzir palavras:**
+   - Substituir palavras como "meow" por "woof":
+     ```bash
+     sed -E 's/meow[a-z]*/woof/g' kitty_ipsum_1.txt > doggy_ipsum_1.txt
+     ```
+
+2. **Verificar a tradução:**
+   - Use `grep` para procurar palavras traduzidas:
+     ```bash
+     grep --color -E 'dog[a-z]*|woof[a-z]*' doggy_ipsum_1.txt
+     ```
+
+3. **Comparar arquivos:**
+   - Confira as diferenças entre o texto original e o traduzido:
+     ```bash
+     diff --color kitty_ipsum_1.txt doggy_ipsum_1.txt
+     ```
+
+---
+
+### **Resumo**
+- Utilize `>`, `>>` e `2>` para redirecionar saída.
+- Redirecione entrada com `<` ou `|`.
+- Manipule texto com `cat`, `wc`, `grep` e `sed`.
+- Compare arquivos com `diff`.
+
+Essas técnicas formam a base para scripts de manipulação de texto em Bash, como o tradutor de Kitty Ipsum.
