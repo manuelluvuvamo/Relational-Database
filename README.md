@@ -623,4 +623,4 @@ echo "$(echo '   M e   ' | sed -E 's/^ *| *$//g')"
 ---
 
 ## Agendador de compromissos do salão de beleza
-  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Agendador de Compromissos do Salão de Beleza](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco%20de%20dados%20da%20Copa%20do%20Mundo)
+  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Agendador de Compromissos do Salão de Beleza](https://github.com/manuelluvuvamo/relational-database/tree/main/Agendador%20de%20Compromissos%20do%20Sal%C3%A3o%20de%20Beleza)
