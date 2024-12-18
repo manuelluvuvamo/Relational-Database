@@ -539,10 +539,85 @@
 
 ---
 
-### **Resumo**
-- Utilize `>`, `>>` e `2>` para redirecionar saída.
-- Redirecione entrada com `<` ou `|`.
-- Manipule texto com `cat`, `wc`, `grep` e `sed`.
-- Compare arquivos com `diff`.
+ ## Bash e SQL: Criando um Sistema de Aluguel de Bicicletas
 
-Essas técnicas formam a base para scripts de manipulação de texto em Bash, como o tradutor de Kitty Ipsum.
+### 1. **Navegação no Menu Principal com `case`**
+Quando um usuário seleciona uma opção no menu principal, um menu correspondente deve ser exibido. O comando `case` é ideal para isso. Veja o exemplo abaixo:
+
+```bash
+case $MAIN_MENU_SELECTION in
+  1) # Código para o menu 1 ;;
+  2) # Código para o menu 2 ;;
+  3) # Código para o menu 3 ;;
+  *) # Voltar ao menu principal ;;
+esac
+```
+
+- A variável `$MAIN_MENU_SELECTION` contém a entrada do usuário. Espera-se que ela seja `1`, `2` ou `3`. 
+- O padrão `*` lida com entradas inválidas, redirecionando o usuário ao menu principal.
+
+---
+
+### 2. **Verificando se a Entrada é um Número**
+Para verificar se uma entrada do usuário é numérica, use o seguinte comando:
+
+```bash
+[[ a =~ [0-9] ]]; echo $?
+```
+
+- O comando `echo $?` retorna `0` se a entrada contiver um número de 0 a 9 (verdadeiro).
+- Para validar entradas estritamente numéricas (do início ao fim), use:
+
+```bash
+[[ a =~ ^[0-9]$ ]]; echo $?
+```
+
+---
+
+### 3. **Validando ID de Bicicleta no Script**
+No script, valide se a entrada do ID de bicicleta é numérica. Adicione o seguinte código:
+
+```bash
+if [[ ! $BIKE_ID_TO_RENT =~ ^[0-9]+$ ]]
+then
+  # Redirecionar ao menu principal
+fi
+```
+
+- O padrão `^[0-9]+$` garante que a entrada contenha apenas números.
+- Caso contrário, o usuário será redirecionado ao menu principal.
+
+---
+
+### 4. **Removendo Espaços Extras no Nome do Cliente**
+#### Substituindo espaços no início:
+```bash
+echo "$(echo ' M e ' | sed 's/^ //g')"
+```
+- O padrão `^ ` remove apenas o espaço no início.
+
+#### Removendo todos os espaços no início:
+```bash
+echo "$(echo '   M e ' | sed 's/^ *//g')"
+```
+- O padrão `^ *` remove qualquer quantidade de espaços no início.
+
+#### Substituindo espaços no final:
+```bash
+echo "$(echo '   M e ' | sed 's/ $//g')"
+```
+- O padrão ` $` remove um único espaço no final.
+
+#### Removendo todos os espaços no final:
+```bash
+echo "$(echo '   M e   ' | sed 's/ *$//g')"
+```
+- O padrão ` *$` remove qualquer quantidade de espaços no final.
+
+#### Removendo espaços no início e no final:
+```bash
+echo "$(echo '   M e   ' | sed -E 's/^ *| *$//g')"
+```
+- O padrão `^ *| *$` usa `|` como operador "ou" para substituir espaços no início (`^ *`) ou no final (` *$`) do texto.
+
+---
