@@ -539,7 +539,7 @@
 
 ---
 
- ## Bash e SQL: Criando um Sistema de Aluguel de Bicicletas
+## Bash e SQL: Criando um Sistema de Aluguel de Bicicletas
 
 ### 1. **Navegação no Menu Principal com `case`**
 Quando um usuário seleciona uma opção no menu principal, um menu correspondente deve ser exibido. O comando `case` é ideal para isso. Veja o exemplo abaixo:
@@ -621,3 +621,6 @@ echo "$(echo '   M e   ' | sed -E 's/^ *| *$//g')"
 - O padrão `^ *| *$` usa `|` como operador "ou" para substituir espaços no início (`^ *`) ou no final (` *$`) do texto.
 
 ---
+
+## Agendador de compromissos do salão de beleza
+  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Agendador de Compromissos do Salão de Beleza](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco%20de%20dados%20da%20Copa%20do%20Mundo)
