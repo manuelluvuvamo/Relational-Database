@@ -821,4 +821,4 @@ Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos pre
 
 ## Banco de dados da tabela periódica
 
-  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Banco de dados da Copa do Mundo](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco%20de%20dados%20da%20Copa%20do%20Mundo)
+  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Banco de dados da tabela periódica](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco%20de%20dados%20da%20tabela%20peri%C3%B3dica)
