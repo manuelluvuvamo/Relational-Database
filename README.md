@@ -824,3 +824,5 @@ Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos pre
   Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Banco de dados da tabela periódica](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco%20de%20dados%20da%20tabela%20peri%C3%B3dica)
 
 ## Jogo de adivinhação de números
+
+  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Jogo de adivinhação de números](https://github.com/manuelluvuvamo/relational-database/tree/main/Jogo%20de%20adivinha%C3%A7%C3%A3o%20de%20n%C3%BAmeros)
