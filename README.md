@@ -658,4 +658,165 @@ Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos pre
   - No **MacOS**, pressione **Esc** seguido da letra para ativá-los.  
   - Em outros sistemas, pressione **Alt** seguido da letra.  
 
-Com essas informações, você estará preparado para criar, editar e manipular arquivos no Nano diretamente no terminal!
+
+## Git criando um objeto de referência SQL
+
+---
+
+#### **1. Iniciar um Repositório Git**
+- O **Git** é um sistema de controle de versão que rastreia alterações no seu código. Para transformar uma pasta em um repositório Git, use:  
+  ```bash
+  git init
+  ```
+- Este comando cria a pasta `.git`, que gerencia o histórico do repositório.
+
+---
+
+#### **2. Verificar o Status do Repositório**
+- Use o comando abaixo para verificar o status atual do repositório:  
+  ```bash
+  git status
+  ```
+- Ele informa sobre arquivos rastreados, não rastreados ou em estágio de preparação (*staging*).
+
+---
+
+#### **3. Trabalhando com Branches**
+- Branches são ramificações para organizar o trabalho. É comum ter uma branch principal (`main`) para o código de produção e outras para desenvolvimento.
+- Crie e mude para uma nova branch com:  
+  ```bash
+  git checkout -b nome_da_branch
+  ```
+  Exemplo:  
+  ```bash
+  git checkout -b feat/adicionar-tabela-referencia
+  ```
+
+---
+
+#### **4. Rastreando e Commitando Arquivos**
+- Adicione arquivos ao estágio (*staging area*):  
+  ```bash
+  git add nome_do_arquivo
+  ```
+- Para adicionar todos os arquivos de uma vez:  
+  ```bash
+  git add .
+  ```
+- Faça um commit com uma mensagem descritiva:  
+  ```bash
+  git commit -m "Mensagem do commit"
+  ```
+  Exemplo:  
+  ```bash
+  git commit -m "feat: adiciona suporte à tabela de referência"
+  ```
+
+---
+
+#### **5. Visualizando Histórico e Diferenças**
+- Veja o histórico de commits:  
+  ```bash
+  git log
+  ```
+  Para uma visualização compacta:  
+  ```bash
+  git log --oneline
+  ```
+- Compare alterações:  
+  ```bash
+  git diff
+  ```
+
+---
+
+#### **6. Mesclando Branches**
+- Para combinar alterações de uma branch em outra, use:  
+  ```bash
+  git merge nome_da_branch
+  ```
+- Após a mesclagem, você pode apagar a branch:  
+  ```bash
+  git branch -d nome_da_branch
+  ```
+
+---
+
+#### **7. Rebasing**
+- Atualize uma branch com o histórico de outra usando:  
+  ```bash
+  git rebase main
+  ```
+- Resolva conflitos editando os arquivos e removendo os delimitadores (`<<<`, `===`, `>>>`).
+
+---
+
+#### **8. Stash: Guardando Alterações Temporariamente**
+- Para guardar mudanças sem commit, use:  
+  ```bash
+  git stash
+  ```
+- Veja as mudanças guardadas:  
+  ```bash
+  git stash list
+  ```
+- Restaure as alterações mais recentes:  
+  ```bash
+  git stash pop
+  ```
+- Para aplicar mudanças sem removê-las do stash:  
+  ```bash
+  git stash apply
+  ```
+
+---
+
+#### **9. Revertendo Commits**
+- Para desfazer um commit sem alterar o histórico:  
+  ```bash
+  git revert HEAD
+  ```
+  Isso cria um novo commit que reverte as alterações do commit anterior.
+
+---
+
+#### **10. Resetando o Repositório**
+- Retorne o repositório para um estado anterior:  
+  ```bash
+  git reset HEAD~1
+  ```
+  - `--soft`: mantém as mudanças no estágio.  
+  - `--hard`: descarta as mudanças completamente.  
+  - Sem flag: mantém as mudanças na árvore de trabalho.
+
+---
+
+#### **11. Rebase Interativo**
+- Use o rebase interativo para reorganizar ou modificar commits:  
+  ```bash
+  git rebase --interactive HEAD~2
+  ```
+- No editor, você pode:  
+  - **`pick`**: manter o commit.  
+  - **`squash (s)`**: combinar commits.  
+  - **`reword`**: alterar a mensagem de um commit.
+
+---
+
+#### **12. Limpando o Histórico com Squash**
+- Combine múltiplos commits em um só para simplificar o histórico:
+  - Durante o rebase interativo, substitua `pick` por `s` nos commits que deseja combinar.
+
+---
+
+#### **13. Excluindo Stashes**
+- Remova um stash específico:  
+  ```bash
+  git stash drop stash@{0}
+  ```
+- Para apagar todos os stashes:  
+  ```bash
+  git stash clear
+  ```
+
+---
