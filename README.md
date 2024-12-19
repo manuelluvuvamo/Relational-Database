@@ -822,3 +822,5 @@ Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos pre
 ## Banco de dados da tabela periódica
 
   Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Banco de dados da tabela periódica](https://github.com/manuelluvuvamo/relational-database/tree/main/Banco%20de%20dados%20da%20tabela%20peri%C3%B3dica)
+
+## Jogo de adivinhação de números
