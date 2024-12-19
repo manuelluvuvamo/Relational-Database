@@ -623,4 +623,39 @@ echo "$(echo '   M e   ' | sed -E 's/^ *| *$//g')"
 ---
 
 ## Agendador de compromissos do salão de beleza
-  Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Agendador de Compromissos do Salão de Beleza](https://github.com/manuelluvuvamo/relational-database/tree/main/Agendador%20de%20Compromissos%20do%20Sal%C3%A3o%20de%20Beleza)
+Este foi um dos desafios onde foi necessário aplicar todos os conhecimentos previamente adiquiridos, os arquivos estão em [Agendador de Compromissos do Salão de Beleza](https://github.com/manuelluvuvamo/relational-database/tree/main/Agendador%20de%20Compromissos%20do%20Sal%C3%A3o%20de%20Beleza)
+
+
+## Nano criando um castelo  
+
+**Nano** é um editor de texto para terminal, usado para editar arquivos diretamente na linha de comando. Veja abaixo um guia detalhado para trabalhar com o Nano:  
+
+### Abrindo um Arquivo  
+- Para abrir um arquivo, use o comando:  
+  ```bash
+  nano nome_do_arquivo
+  ```  
+
+### Salvando o Arquivo  
+- Após editar, pressione **Ctrl + O** (Control + O) para "gravar" ou salvar o arquivo.  
+
+### Saindo do Nano  
+- Para sair, pressione **Ctrl + X**.  
+
+### Recortando e Movendo Linhas  
+- Use **Ctrl + K** para **"cortar"** uma linha. Isso removerá a linha em que o cursor está posicionado.  
+- Para **colar** a linha cortada, use **Ctrl + U**.  
+
+### Movendo o Cursor  
+- No Nano, você deve mover o cursor usando o teclado, pois o mouse não é suportado.  
+
+### Comandos Básicos  
+- Todos os comandos no rodapé do Nano são representados com o símbolo **^**, que indica que você deve pressionar **Control** junto com a letra correspondente.  
+  - Exemplo: **^X** significa **Ctrl + X** (para sair do Nano).  
+
+### Comandos Meta  
+- Alguns comandos começam com a letra **M** no rodapé, indicando que são comandos **Meta**:  
+  - No **MacOS**, pressione **Esc** seguido da letra para ativá-los.  
+  - Em outros sistemas, pressione **Alt** seguido da letra.  
+
+Com essas informações, você estará preparado para criar, editar e manipular arquivos no Nano diretamente no terminal!
